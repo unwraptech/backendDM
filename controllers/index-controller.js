@@ -8,4 +8,6 @@ const ThirdPartyIntegrationController = require('./third-party-controller');
 const third = new ThirdPartyIntegrationController();
 const MobileController = require('./mobile-controller');
 const mobile = new MobileController();
-module.exports = { users , auth, devices, third, mobile }
+const ImageController = require('./image-controller');
+const image = new ImageController();
+module.exports = { users , auth, devices, third, mobile , image}
