@@ -14,4 +14,12 @@ router.post('/compare-mobile',
 router.get('/add-devices-3devices',
     controller.mobile.getMobileDevices
 );
+router.post('/getMobileByBrand',
+    controller.mobile.getMobileByBrand
+);
+router.get('/getMobilesCount',
+    controller.mobile.getMobilesCount
+);
+
+
 module.exports = router;

@@ -5,10 +5,10 @@ const multer = require('multer');
 const passport = require('passport')
 const controller = require('../controllers/index-controller');
 
-router.get('/add-devices-3devices',
+router.get('/add-devices-3devices/:name',
     controller.third.addFOnoAPiDevices
 );
-router.get('/add-latest-3devices',
+router.get('/add-latest-3devices/:name',
     controller.third.addfonoapiLatest
 );
 module.exports = router;

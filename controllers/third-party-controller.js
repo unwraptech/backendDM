@@ -1,5 +1,7 @@
-// var fonoapi = require('./fonoapi.node.js');
-// fonoapi.token = 'f512a2e515a521e6c53baf489cd410ca9010700da7a259cb';
+const con = require('../db/connection-mysql');
+
+var fonoapi = require('fonoapi-nodejs');
+fonoapi.token = 'f512a2e515a521e6c53baf489cd410ca9010700da7a259cb';
 
 require('dotenv').config();
 class FileController {
@@ -23,7 +25,7 @@ class FileController {
                             data[i].dual_, data[i]._5g, data[i].performance, data[i].display, data[i].sar_eu
                         ]
                     ];
-                    db.query(sql, [values], function (err, result) {
+                    con.query(sql, [values], function (err, result) {
                         if (err) {
                             devicesdublicate = devicesdublicate + 1;
                             if (err.code === 'ER_DUP_ENTRY') {
@@ -67,7 +69,7 @@ class FileController {
                         ]
 
                     ];
-                    db.query(sql, [values], function (err, result) {
+                    con.query(sql, [values], function (err, result) {
                         if (err) {
                             devicesdublicate = devicesdublicate + 1;
                             if (err.code === 'ER_DUP_ENTRY') {
@@ -82,17 +84,14 @@ class FileController {
                                 res.send({ 'record inserted': devicesinserted, 'devicesdublicate': devicesdublicate })
                             }
                         }
+                        console.log('record inserted::', devicesinserted, 'devicesdublicate::', devicesdublicate)
                     });
                 }
-                console.log('record inserted::', devicesinserted, 'devicesdublicate::', devicesdublicate)
             } else {
                 res.send({ 'record inserted': devicesinserted, 'devicesdublicate': devicesdublicate })
-
             }
-
         }
     }
-
 }
 
 

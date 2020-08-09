@@ -35,7 +35,9 @@ class MobileController {
           });
     }
     async getMobileByBrand(req, res) {
-        const searchmobile_SQL ="call get_devices_by_brand('"+req.params.brand+"')"
+      console.log(req.body);
+        const searchmobile_SQL ="call get_devices_by_brand(100,1,'MOBILE','"+req.body.Brand+"')"
+        console.log(searchmobile_SQL);
         con.query(searchmobile_SQL, function (err, result) {
           if (err){
             res.status(400).json({error:'Some error occured please try again later'})
@@ -54,6 +56,18 @@ class MobileController {
             }
             });
     }
+    async getMobilesCount(req, res) {
+      const searchmobile_SQL ="call get_Mobile_Brand_Count()"
+      con.query(searchmobile_SQL, function (err, result) {
+          if (err){
+            res.status(400).json({error:'Some error occured please try again later'})
+          }else {
+            res.status(200).json({devices:result[0]})
+          }
+          });
+  }
+
+
 }
 
 
